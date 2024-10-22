@@ -12,8 +12,8 @@ export const getPriorityIcon = (priority) => {
 
 export const getStatusIcon = (priority) => {
     switch (priority) {
-        case "Backlog": return <img src="/images/Backlog.svg" alt="Backlog" width={24} />
-        case "Todo": return <img src="/images/To-do.svg" alt="Todo" width={24} />
+        case "Backlog": return <img src="/images/Backlog.svg" alt="Backlog" width={16} />
+        case "Todo": return <img src="/images/To-do.svg" alt="Todo" width={16} />
         case "In progress": return <img src="/images/in-progress.svg" alt="In progress" width={16} />
         case "Done": return <img src="/images/Done.svg" alt="Done" width={16} />
         case "Cancelled": return <img src="/images/Cancelled.svg" alt="Cancelled" width={16} />
