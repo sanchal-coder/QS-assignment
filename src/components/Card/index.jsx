@@ -14,7 +14,7 @@ const getMoreIconByPriority = (priority) => {
         case 3: 
             return '/images/Img - High Priority.svg'; 
         case 4: 
-            return '/images/SVG - Urgent Priority colour.svg'; 
+            return '/images/SVG - Urgent Priority grey.svg'; 
         default:
             return '/images/default_icon.svg'; 
     }
