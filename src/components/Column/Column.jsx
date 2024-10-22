@@ -38,7 +38,7 @@ function Column({ tickets, grouping, groupBy, userIdToData }) {
                 </div>
                 <div className='column-header-right-container'>
                    <img src="images/add.svg" alt="add" />
-                   <img src="images/Down.svg" alt="Down" />
+                   <img src="images/down.svg" alt="Down" />
                 </div>
             </div>
             <div className='cards-container'>
