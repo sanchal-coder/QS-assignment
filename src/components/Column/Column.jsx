@@ -42,7 +42,16 @@ function Column({ tickets, grouping, groupBy, userIdToData }) {
                 </div>
             </div>
             <div className='cards-container'>
-                {tickets.map((ticket) => <Card key={ticket.id} ticket={ticket} userData={userIdToData[ticket.userId]} hideStatusIcon={grouping === "status"} hideProfileIcon={grouping === "user"} />)}
+                {tickets.map((ticket) => 
+                    <Card 
+                        key={ticket.id} 
+                        ticket={ticket} 
+                        userData={userIdToData[ticket.userId]} 
+                        hideStatusIcon={grouping === "status"} 
+                        hideProfileIcon={grouping === "user"} 
+                        hidePriorityIcon={grouping === "user" || grouping === "status"}
+                    />
+                )}
             </div>
         </div>
     );

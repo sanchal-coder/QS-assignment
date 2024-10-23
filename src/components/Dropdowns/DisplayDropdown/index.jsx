@@ -1,14 +1,13 @@
-import React, { useCallback, useEffect, useRef, useState, ChangeEvent } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import './displayDropdown.css'
-
 
 function DisplayDropdown({ grouping, setGrouping, ordering, setOrdering }) {
   const [visible, setVisible] = useState(false);
   const componentRef = useRef(null);
 
   const openDropdown = useCallback(() => {
-    setVisible(true);
-  }, [],);
+    setVisible(prevVisible => !prevVisible); // Toggle visibility
+  }, []);
 
   const handleClickOutside = useCallback((event) => {
     if (componentRef.current && !componentRef.current.contains(event.target)) {
@@ -16,8 +15,15 @@ function DisplayDropdown({ grouping, setGrouping, ordering, setOrdering }) {
     }
   }, []);
 
-  const onGroupingChange = useCallback((e) => setGrouping(e.target.value), []);
-  const onOrderingChange = useCallback((e) => setOrdering(e.target.value), []);
+  const onGroupingChange = useCallback((e) => {
+    setGrouping(e.target.value);
+    setVisible(false); // Close dropdown after selecting grouping
+  }, [setGrouping]);
+
+  const onOrderingChange = useCallback((e) => {
+    setOrdering(e.target.value);
+    setVisible(false); // Close dropdown after selecting ordering
+  }, [setOrdering]);
 
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
@@ -25,7 +31,7 @@ function DisplayDropdown({ grouping, setGrouping, ordering, setOrdering }) {
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  });
+  }, [handleClickOutside]);
 
   return (
     <div className='display-dropdown' ref={componentRef}>

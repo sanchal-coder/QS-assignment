@@ -4,23 +4,23 @@ import UserIcon from '../UserIcon';
 import { getStatusIcon } from '../../utils/helper';
 
 const getMoreIconByPriority = (priority) => {
-    switch (priority) {
-        case 0:
-            return '/images/No-priority.svg'; 
-        case 1: 
-            return '/images/Img - Low Priority.svg'; 
-        case 2:
-            return '/images/Img - Medium Priority.svg'; 
-        case 3: 
-            return '/images/Img - High Priority.svg'; 
-        case 4: 
-            return '/images/SVG - Urgent Priority grey.svg'; 
-        default:
-            return '/images/default_icon.svg'; 
-    }
+  switch (priority) {
+    case 0:
+      return '/images/No-priority.svg';
+    case 1:
+      return '/images/Img - Low Priority.svg';
+    case 2:
+      return '/images/Img - Medium Priority.svg';
+    case 3:
+      return '/images/Img - High Priority.svg';
+    case 4:
+      return '/images/SVG - Urgent Priority grey.svg';
+    default:
+      return '/images/default_icon.svg';
+  }
 };
 
-function Card({ ticket, userData, hideStatusIcon, hideProfileIcon }) {
+function Card({ ticket, userData, hideStatusIcon, hideProfileIcon, hidePriorityIcon }) {
   return (
     <div className='card'>
       <div className='top-container'>
@@ -32,9 +32,13 @@ function Card({ ticket, userData, hideStatusIcon, hideProfileIcon }) {
         <div className='title'>{ticket.title}</div>
       </div>
       <div className='bottom-container'>
-        <div className='more-icon-container'>
-          <img src={getMoreIconByPriority(ticket.priority)} alt='More options' />
-        </div>
+
+        {hidePriorityIcon ? (
+          <div className='more-icon-container'> <img src={getMoreIconByPriority(ticket.priority)} alt='More options' /></div>
+
+        ) : (
+          <div></div>
+        )}
         {ticket.tag.map((t) => (
           <div key={t} className='tag-container'>
             <div className='FeatureRequestIcon'></div>
